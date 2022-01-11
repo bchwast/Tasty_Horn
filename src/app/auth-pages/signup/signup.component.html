@@ -1,0 +1,35 @@
+<div class="signup-container">
+  <h1>Sign up</h1>
+  <form class="signup-form" [formGroup]="signup" (ngSubmit)="submit()">
+    <div class="signup-field">
+      <label for="nick">Nick</label>
+      <input id="nick" type="text" formControlName="nick">
+      <p class="signup-alert" *ngIf="signup.get('nick')!.hasError('required') &&
+      (signup.get('nick')!.touched || signup.get('nick')!.dirty)">Nick is required</p>
+    </div>
+    <div class="signup-field">
+      <label for="email">E-mail</label>
+      <input id="email" type="email" formControlName="email">
+      <p class="signup-alert" *ngIf="signup.get('email')!.hasError('required') &&
+      (signup.get('email')!.touched || signup.get('email')!.dirty)">E-mail is required</p>
+    </div>
+    <div class="signup-field">
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password">
+      <p class="signup-alert" *ngIf="signup.get('password')!.hasError('required') &&
+      (signup.get('password')!.touched || signup.get('password')!.dirty)">Password is required</p>
+    </div>
+    <div class="signup-field">
+      <label for="confirm">Confirm password</label>
+      <input id="confirm" type="password" formControlName="confirm">
+      <p class="signup-alert" *ngIf="signup.get('confirm')!.hasError('required') &&
+      (signup.get('confirm')!.touched || signup.get('confirm')!.dirty)">Password is required</p>
+      <p class="signup-alert" *ngIf="signup.get('confirm')!.hasError('confirmPassword') &&
+      (signup.get('confirm')!.touched || signup.get('confirm')!.dirty)">Passwords don't match</p>
+    </div>
+    <div class="signup-field">
+      <button class="signup-button" [disabled]="!signup.valid">Sign up</button>
+      <a class="signup-link" routerLink="/login" routerLinkActive="active">Have an account?</a>
+    </div>
+  </form>
+</div>

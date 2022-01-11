@@ -1,0 +1,38 @@
+<div class="menu-header">
+  <div class="menu-hamburger" (click)="menuToggle()" [hidden]="width >= 768">
+    <div class="menu-hamburger-bar1" [class.menu-hamburger-bar1-clicked]="visible && width < 768"></div>
+    <div class="menu-hamburger-bar2" [class.menu-hamburger-bar2-clicked]="visible && width < 768"></div>
+    <div class="menu-hamburger-bar3" [class.menu-hamburger-bar3-clicked]="visible && width < 768"></div>
+  </div>
+  <div class="menu-logo">
+    <img src="assets/images/small_horn.png" alt="logo">
+  </div>
+</div>
+<div class="menu-container" [ngStyle]="{'visibility': visible || width >= 768 ? 'visible' : 'hidden',
+      'transform': visible || width >= 768 ? null : 'scaleY(0)', 'height': visible || width >= 768 ? '100%' : 0}">
+  <div class="menu-subcontainer-left" >
+    <a class="menu-element" routerLink="./home" routerLinkActive="active">Home</a>
+    <a class="menu-element" routerLink="./dishes" routerLinkActive="active">Menu</a>
+    <a class="menu-element" routerLink="./manager" routerLinkActive="active" *ngIf="user.type >= 1">Manage dishes</a>
+    <a class="menu-element" routerLink="/admin" routerLinkActive="active" *ngIf="user.type >= 2">Admin view</a>
+  </div>
+  <div class="menu-subcontainer-right">
+    <a class="menu-element" routerLink="/login" routerLinkActive="active" *ngIf="user.type < 0">Log in</a>
+    <a class="menu-element" routerLink="/signup" routerLinkActive="active" *ngIf="user.type< 0">Sign up</a>
+    <p class="menu-element" id="menu-element-nick" *ngIf="user.type >= 0">{{user.nick}}</p>
+    <a class="menu-element" (click)="authService.logOut()" *ngIf="user.type >= 0" routerLink="home"
+       routerLinkActive="active">Sign Out</a>
+    <div class="menu-element" id="menu-element-currency">
+      <span class="menu-currency"
+            [ngStyle]="{'border': cartCurrencyService.currentCurrency == 'eur' ? '3px solid limegreen' : null}"
+            (click)="cartCurrencyService.changeCurrency('eur'); filterService.update()">€</span>
+      <span class="menu-currency"
+            [ngStyle]="{'border': cartCurrencyService.currentCurrency == 'usd' ? '3px solid limegreen' : null}"
+            (click)="cartCurrencyService.changeCurrency('usd'); filterService.update()">$</span>
+    </div>
+    <a class="menu-element" routerLink="./cart" routerLinkActive="active" *ngIf="user.type >= 0">
+      <span>{{cartCurrencyService.ordersAmm}}</span>
+      <fa-icon [icon]="faCart"></fa-icon>
+    </a>
+  </div>
+</div>

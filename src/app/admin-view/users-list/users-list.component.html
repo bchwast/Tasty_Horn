@@ -1,0 +1,14 @@
+<div class="user-list-container">
+  <h1>Users</h1>
+  <div class="user-list-user" *ngFor="let user of users">
+    <p class="user-list-element">Nick: {{user.nick}}</p>
+    <p class="user-list-element">E-mail: {{user.email}}</p>
+    <div class="user-list-buttons">
+      <button class="user-list-button" *ngIf="user.banned" (click)="userService.switchBan(user, false)">Unban</button>
+      <button class="user-list-button" *ngIf="!user.banned" (click)="userService.switchBan(user, true)">Ban</button>
+      <button class="user-list-button" *ngIf="user.type != 0" (click)="userService.setUser(user)">Remove roles</button>
+      <button class="user-list-button" *ngIf="user.type != 1" (click)="userService.setManager(user)">Make manager</button>
+      <button class="user-list-button" *ngIf="user.type != 2" (click)="userService.setAdmin(user)">Make admin</button>
+    </div>
+  </div>
+</div>

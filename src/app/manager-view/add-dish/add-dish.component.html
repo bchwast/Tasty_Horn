@@ -1,0 +1,90 @@
+<button class="add-dish-back" routerLink="/manager" routerLinkActive="active">Back</button>
+<form class="add-dish-container" [formGroup]="dishForm" (ngSubmit)="onSubmit()">
+  <h1>Add dish</h1>
+  <div class="add-dish-element">
+    <div class="add-dish-input">
+      <label for="name">Name: </label>
+      <input id="name" type="text" formControlName="name">
+    </div>
+    <p class="add-dish-alert" *ngIf="dishForm.get('name')!.hasError('required') &&
+      (dishForm.get('name')!.touched || dishForm.get('name')!.dirty)">Name is required</p>
+    <p class="add-dish-alert" *ngIf="dishForm.get('name')!.hasError('pattern') &&
+      (dishForm.get('name')!.touched || dishForm.get('name')!.dirty)">Illegal characters</p>
+    <p class="add-dish-alert" *ngIf="dishForm.get('name')!.hasError('duplicateName') &&
+      (dishForm.get('name')!.touched || dishForm.get('name')!.dirty)">Dish with this name already exists</p>
+  </div>
+  <div class="add-dish-element">
+    <div class="add-dish-input">
+      <label for="cuisine">Cuisine: </label>
+      <input id="cuisine" type="text" formControlName="cuisine">
+    </div>
+    <p class="add-dish-alert" *ngIf="dishForm.get('cuisine')!.hasError('required') &&
+      (dishForm.get('cuisine')!.touched || dishForm.get('cuisine')!.dirty)">Cuisine is required</p>
+    <p class="add-dish-alert" *ngIf="dishForm.get('cuisine')!.hasError('pattern') &&
+      (dishForm.get('cuisine')!.touched || dishForm.get('cuisine')!.dirty)">Illegal characters</p>
+  </div>
+  <div class="add-dish-element">
+    <div class="add-dish-input">
+      <label for="type">Type: </label>
+      <input id="type" type="text" formControlName="type">
+    </div>
+    <p class="add-dish-alert" *ngIf="dishForm.get('type')!.hasError('required') &&
+      (dishForm.get('type')!.touched || dishForm.get('type')!.dirty)">Type is required</p>
+    <p class="add-dish-alert" *ngIf="dishForm.get('type')!.hasError('pattern') &&
+      (dishForm.get('type')!.touched || dishForm.get('type')!.dirty)">Illegal characters</p>
+  </div>
+  <div class="add-dish-element">
+    <div class="add-dish-input">
+      <label for="category">Category: </label>
+      <input id="category" type="text" formControlName="category">
+    </div>
+    <p class="add-dish-alert" *ngIf="dishForm.get('category')!.hasError('required') &&
+      (dishForm.get('category')!.touched || dishForm.get('category')!.dirty)">Category is required</p>
+    <p class="add-dish-alert" *ngIf="dishForm.get('category')!.hasError('pattern') &&
+      (dishForm.get('category')!.touched || dishForm.get('category')!.dirty)">Illegal characters</p>
+  </div>
+  <div class="add-dish-element">
+    <div class="add-dish-input">
+      <label for="max-amount">Amount: </label>
+      <input id="max-amount" type="number" formControlName="maxAmount">
+    </div>
+    <p class="add-dish-alert" *ngIf="dishForm.get('maxAmount')!.hasError('required') &&
+      (dishForm.get('maxAmount')!.touched || dishForm.get('maxAmount')!.dirty)">Max amount is required</p>
+    <p class="add-dish-alert" *ngIf="dishForm.get('maxAmount')!.hasError('pattern') &&
+      (dishForm.get('maxAmount')!.touched || dishForm.get('maxAmount')!.dirty)">Non-negative number is required</p>
+  </div>
+  <div class="add-dish-element">
+    <div class="add-dish-input">
+      <label for="price">Price: </label>
+      <input id="price" type="number" formControlName="price">
+    </div>
+    <p class="add-dish-alert" *ngIf="dishForm.get('price')!.hasError('required') &&
+      (dishForm.get('price')!.touched || dishForm.get('price')!.dirty)">Price is required</p>
+    <p class="add-dish-alert" *ngIf="dishForm.get('price')!.hasError('pattern') &&
+      (dishForm.get('price')!.touched || dishForm.get('price')!.dirty)">Non-negative number lower than 50 is
+      required</p>
+  </div>
+  <div class="add-dish-element">
+    <div class="add-dish-input">
+      <label for="description">Description: </label>
+      <input id="description" type="text" formControlName="description">
+    </div>
+    <p class="add-dish-alert" *ngIf="dishForm.get('description')!.hasError('required') &&
+      (dishForm.get('description')!.touched || dishForm.get('description')!.dirty)">Description is required</p>
+  </div>
+  <div class="add-dish-element" formArrayName="ingredients">
+    <div class="add-dish-input" *ngFor="let ingredient of ingredients.controls; let i = index">
+      <label for="ingredient-{{ i }}">Ingredient: </label>
+      <input id="ingredient-{{ i }}" type="text" [formControlName]="i">
+    </div>
+    <button (click)="addIngredient()" type="button">Add next ingredient</button>
+  </div>
+  <div class="add-dish-element" formArrayName="photos">
+    <div class="add-dish-input" *ngFor="let photo of photos.controls; let i = index">
+      <label for="photo-{{ i }}">Photo: </label>
+      <input id="photo-{{ i }}" type="text" [formControlName]="i">
+    </div>
+    <button (click)="addPhoto()" type="button">Add next photo</button>
+  </div>
+  <button class="add-dish-button" [disabled]="!dishForm.valid">Add dish</button>
+</form>

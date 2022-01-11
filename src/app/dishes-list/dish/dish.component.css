@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, serif;
+}
+
+.dish-container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  grid-template-areas:
+    "picture picture picture name name name"
+    "picture picture picture name name name"
+    "picture picture picture cuisine cuisine cuisine"
+    "picture picture picture type type type"
+    "picture picture picture category category category"
+    "picture picture picture ordered rating rating"
+    "picture picture picture price price price"
+    "picture picture picture add add remove";
+  background-color: cornflowerblue;
+  color: white;
+  border: 10px solid grey;
+  border-radius: 15px;
+  box-shadow: 8px 8px 24px -10px rgba(66, 68, 90, 1);
+  transition: ease 0.2s;
+}
+
+.dish-container:hover {
+  height: 101%;
+  width: 101%;
+}
+
+.dish-name {
+  grid-area: name;
+  font-size: 150%;
+  margin: auto;
+  text-align: center;
+}
+
+.dish-ordered {
+  grid-area: ordered;
+  font-size: 200%;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.dish-picture {
+  grid-area: picture;
+  cursor: pointer;
+}
+
+.dish-picture > img {
+  width: 100%;
+  height: 100%;
+}
+
+.dish-type {
+  grid-area: type;
+  margin: auto;
+  font-size: 120%;
+}
+
+.dish-cuisine {
+  grid-area: cuisine;
+  margin: auto;
+  font-size: 120%;
+}
+
+.dish-category {
+  grid-area: category;
+  margin: auto;
+  font-size: 120%;
+}
+
+.dish-price {
+  grid-area: price;
+  margin: auto;
+  font-size: 200%;
+}
+
+.dish-add {
+  grid-area: add;
+  cursor: pointer;
+  font-size: 200%;
+  color: white;
+  background-color: greenyellow;
+  border: 0;
+  transition: ease 0.2s;
+}
+
+.dish-add:hover {
+  background-color: green;
+}
+
+.dish-remove {
+  grid-area: remove;
+  cursor: pointer;
+  font-size: 200%;
+  color: white;
+  background-color: indianred;
+  border: 0;
+  transition: ease 0.2s;
+}
+
+.dish-remove:hover {
+  background-color: red;
+}
+
+.dish-delete {
+  grid-area: delete;
+  cursor: pointer;
+  font-size: 120%;
+  color: white;
+  background-color: rebeccapurple;
+  border: 0;
+  transition: ease 0.2s;
+}
+
+.dish-delete:hover {
+  background-color: purple;
+}
+
+.dish-rating {
+  grid-area: rating;
+}
+
+.dish-rating img {
+  width: 20%;
+  height: 90%;
+}
+
+.dish-unavailable {
+  grid-area: price;
+  margin: auto;
+  text-align: center;
+  font-size: 120%;
+}

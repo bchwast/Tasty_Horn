@@ -1,0 +1,105 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, serif;
+}
+
+.dish-review-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.dish-review-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 15px;
+  box-shadow: 8px 8px 24px -6px rgba(66, 68, 90, 1);
+  padding: 1%;
+  height: 100%;
+  margin-bottom: 2%;
+}
+
+.dish-review-form > label {
+  text-wrap: none;
+  margin: 0.5%;
+  font-size: 120%;
+}
+
+.dish-review-form > input {
+  outline: 0;
+  border: 0;
+  border-radius: 5px;
+  font-size: 100%;
+  padding: 0.5%;
+}
+
+.dish-review-alert {
+  margin-top: 1%;
+  font-size: 120%;
+}
+
+.dish-review-add {
+  border: 0;
+  border-radius: 5px;
+  font-size: 120%;
+  color: white;
+  background-color: royalblue;
+  padding: 0.5%;
+  margin: 1%;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.dish-review-add:hover {
+  background-color: darkslateblue;
+}
+
+.dish-review-add:disabled {
+  background-color: grey;
+  cursor: default;
+}
+
+.dish-review-list-container {
+  display: flex;
+  flex-direction: column;
+  background-color: cornflowerblue;
+  border-radius: 15px;
+  color: white;
+  padding: 1%;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 2%;
+  box-shadow: 8px 8px 24px -6px rgba(66, 68, 90, 1);
+}
+
+.dish-review-list {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 1%;
+  height: 100%;
+  width: 100%;
+  gap: 1%;
+}
+
+.dish-review-review {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: royalblue;
+  border-radius: 10px;
+  color: white;
+  padding: 1%;
+  margin-bottom: 2%;
+}
+
+@media only screen and (min-width: 768px) {
+  .dish-review-review {
+    width: 23%;
+  }
+}

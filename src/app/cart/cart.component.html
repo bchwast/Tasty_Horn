@@ -1,0 +1,11 @@
+<div class="cart-container">
+  <h1>Cart</h1>
+  <div class="cart-container-top">
+    <div class="cart-item" *ngFor="let item of cartCurrencyService.user.history">
+      <p>{{item.name}} x {{item.quantity}}</p>
+      <button (click)="cartCurrencyService.removeByID(item.id)"><fa-icon [icon]="faTrash"></fa-icon></button>
+    </div>
+  </div>
+  <h3 class="cart-value">
+    Value: {{cartCurrencyService.getOrdersValue() + cartCurrencyService.currencies[cartCurrencyService.currentCurrency].symbol}}</h3>
+</div>

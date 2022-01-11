@@ -1,0 +1,44 @@
+<div class="edit-container">
+  <button routerLink="/manager" routerLinkActive="active">Back</button>
+  <div class="edit-picture">
+    <button class="edit-picture-button" (click)="prevPhoto()">
+      <fa-icon [icon]="faChevronLeft"></fa-icon>
+    </button>
+    <img [src]="dish.photos[photo]" alt="{{dish.name}} picture">
+    <button class="edit-picture-button" (click)="nextPhoto()">
+      <fa-icon [icon]="faChevronRight"></fa-icon>
+    </button>
+  </div>
+  <div class="edit-info">
+    <h1>{{dish.name}}</h1>
+    <p class="edit-info-detail">Cuisine: {{dish.cuisine | titlecase}}</p>
+    <p class="edit-info-detail">Type: {{dish.type}}</p>
+    <p class="edit-info-detail">Category: {{dish.category}}</p>
+    <p class="edit-info-detail">Ordered: {{dish.ordered}}</p>
+    <p class="edit-info-detail">Price: {{(dish.price * cartCurrencyService.currencies[cartCurrencyService.currentCurrency].value).toFixed(2)}}
+      {{cartCurrencyService.currencies[cartCurrencyService.currentCurrency].symbol}}</p>
+    <p class="edit-info-detail">Rating: {{dish.rating}}</p>
+    <p class="edit-info-detail">Description: {{dish.description}}</p>
+    <div class="edit-info-detail">Ingredients:
+      <div class="edit-info-detail-deep" *ngFor="let ingredient of dish.ingredients">
+        <p>- {{ingredient}}</p>
+        <div>
+          <button (click)="removeIngredient(ingredient)">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="edit-info-detail">Photos:
+      <div class="edit-info-detail-deep" *ngFor="let photo of dish.photos">
+        <p>- {{photo}}</p>
+        <div>
+          <button (click)="removePhoto(photo)">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-edit-dish-form class="edit-form" [dish]="dish"></app-edit-dish-form>
+</div>

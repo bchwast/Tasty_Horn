@@ -1,0 +1,32 @@
+<div class="dish-review-container">
+  <form class="dish-review-form" [formGroup]="review" (ngSubmit)="submit()">
+    <label for="name">Name:</label>
+    <input id="name" type="text" formControlName="name">
+    <p class="dish-review-alert" *ngIf="review.get('name')!.hasError('required') &&
+        (review.get('name')!.touched || review.get('name')!.dirty)">Name is required</p>
+    <label for="date">Date:</label>
+    <input id="date" type="date" formControlName="date">
+    <label for="text">Review:</label>
+    <input id="text" type="text" formControlName="text">
+    <p class="dish-review-alert" *ngIf="review.get('text')!.hasError('required') &&
+        (review.get('text')!.touched || review.get('text')!.dirty)">Review is required</p>
+    <p class="dish-review-alert" *ngIf="review.get('text')!.hasError('minlength') &&
+        (review.get('text')!.touched || review.get('text')!.dirty)">Review must be at least 50 characters long</p>
+    <p class="dish-review-alert" *ngIf="review.get('text')!.hasError('maxlength') &&
+        (review.get('text')!.touched || review.get('text')!.dirty)">Review cannot be longer than 500 characters</p>
+    <p class="dish-review-alert" *ngIf="alert == 1">Banned users cannot review dishes!</p>
+    <p class="dish-review-alert" *ngIf="alert == 2">You need to order the dish first!</p>
+    <button class="dish-review-add" type="submit" [disabled]="!review.valid">Add review</button>
+  </form>
+  <div class="dish-review-list-container">
+    <p>Reviews:</p>
+    <div class="dish-review-list">
+      <div class="dish-review-review" *ngFor="let review of dish.reviews">
+        <h3>{{review.nick}}</h3>
+        <h4>{{review.name}}</h4>
+        <h4>{{review.date}}</h4>
+        <p>{{review.body}}</p>
+      </div>
+    </div>
+  </div>
+</div>

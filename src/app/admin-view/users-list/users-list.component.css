@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, serif;
+}
+
+.user-list-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 15px;
+  box-shadow: 8px 8px 24px -6px rgba(66, 68, 90, 1);
+  padding: 2%;
+}
+
+.user-list-user {
+  background-color: royalblue;
+  border-radius: 10px;
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  margin: 1%;
+  min-width: 90%;
+}
+
+.user-list-element {
+  margin: 1%;
+  white-space: nowrap;
+  font-size: 120%;
+}
+
+.user-list-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2%;
+}
+
+.user-list-button {
+  background-color: darkslateblue;
+  color: white;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  padding: 1%;
+  font-size: 120%;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.user-list-button:hover {
+  background-color: rebeccapurple;
+}

@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, serif;
+}
+
+.manager-add-dish {
+  background-color: royalblue;
+  color: white;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  padding: 1%;
+  font-size: 150%;
+  width: 98%;
+  margin: 2% 1% 1% 1%;
+  box-shadow: 8px 8px 24px -6px rgba(66, 68, 90, 1);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.manager-add-dish:hover {
+  background-color: darkslateblue;
+}
+
+.manager-dishes-list-container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 3%;
+  margin: 0 1%;
+}
+
+.manager-dishes-list-element {
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+@media only screen and (min-width: 768px) {
+  .manager-add-dish {
+    margin-left: 75%;
+    padding: 0.5% 1%;
+    width: 24%;
+  }
+
+  .manager-dishes-list-element {
+    width: 48%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .manager-dishes-list-element {
+    width: 31%;
+  }
+}
+

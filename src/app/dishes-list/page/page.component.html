@@ -1,0 +1,15 @@
+<div class="page-container">
+  <div class="page-navigation-container">
+    <fa-icon [icon]="faDoubleLeft" (click)="paginationService.firstPage()"></fa-icon>
+    <fa-icon [icon]="faLeft" (click)="paginationService.prevPage()"></fa-icon>
+    <p>{{paginationService.currentPage}} / {{paginationService.getMaxPage()}}</p>
+    <fa-icon [icon]="faRight" (click)="paginationService.nextPage()"></fa-icon>
+    <fa-icon [icon]="faDoubleRight" (click)="paginationService.lastPage()"></fa-icon>
+  </div>
+  <div class="page-capacity-container">
+    <label for="capacity">Dishes per page: </label>
+    <input id="capacity" type="number" min="1" value="9"
+           [(ngModel)]="paginationService.itemsPerPage" (ngModelChange)="paginationService.update()"
+           oninput="validity.valid||(value='')">
+  </div>
+</div>

@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "filter"
+    "list"
+    "add"
+    "cart";
+}
+
+app-filter {
+  grid-area: filter;
+}
+
+app-dish-list {
+  grid-area: list;
+}
+
+app-add-dish {
+  grid-area: add;
+}
+
+app-cart {
+  grid-area: cart;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+    "filter filter"
+    "list list"
+    "add cart";
+  }
+}

@@ -1,0 +1,75 @@
+<form class="edit-form-container" [formGroup]="edit" (ngSubmit)="onSubmit()">
+  <h1>Edit dish</h1>
+  <div class="edit-form-element">
+    <div class="edit-form-input">
+      <label for="name">Name: </label>
+      <input id="name" type="text" formControlName="name">
+    </div>
+    <p class="edit-form-alert" *ngIf="edit.get('name')!.hasError('pattern') &&
+      (edit.get('name')!.touched || edit.get('name')!.dirty)">Illegal characters</p>
+    <p class="edit-form-alert" *ngIf="edit.get('name')!.hasError('duplicateName') &&
+      (edit.get('name')!.touched || edit.get('name')!.dirty)">Dish with this name already exists</p>
+  </div>
+  <div class="edit-form-element">
+    <div class="edit-form-input">
+      <label for="cuisine">Cuisine: </label>
+      <input id="cuisine" type="text" formControlName="cuisine">
+    </div>
+    <p class="edit-form-alert" *ngIf="edit.get('cuisine')!.hasError('pattern') &&
+      (edit.get('cuisine')!.touched || edit.get('cuisine')!.dirty)">Illegal characters</p>
+  </div>
+  <div class="edit-form-element">
+    <div class="edit-form-input">
+      <label for="type">Type: </label>
+      <input id="type" type="text" formControlName="type">
+    </div>
+    <p class="edit-form-alert" *ngIf="edit.get('type')!.hasError('pattern') &&
+      (edit.get('type')!.touched || edit.get('type')!.dirty)">Illegal characters</p>
+  </div>
+  <div class="edit-form-element">
+    <div class="edit-form-input">
+      <label for="category">Category: </label>
+      <input id="category" type="text" formControlName="category">
+    </div>
+    <p class="edit-form-alert" *ngIf="edit.get('category')!.hasError('pattern') &&
+      (edit.get('category')!.touched || edit.get('category')!.dirty)">Illegal characters</p>
+  </div>
+  <div class="edit-form-element">
+    <div class="edit-form-input">
+      <label for="max-amount">Amount: </label>
+      <input id="max-amount" type="number" formControlName="maxAmount">
+    </div>
+    <p class="edit-form-alert" *ngIf="edit.get('maxAmount')!.hasError('pattern') &&
+      (edit.get('maxAmount')!.touched || edit.get('maxAmount')!.dirty)">Non-negative number is required</p>
+  </div>
+  <div class="edit-form-element">
+    <div class="edit-form-input">
+      <label for="price">Price: </label>
+      <input id="price" type="number" formControlName="price">
+    </div>
+    <p class="edit-form-alert" *ngIf="edit.get('price')!.hasError('pattern') &&
+      (edit.get('price')!.touched || edit.get('price')!.dirty)">Non-negative number lower than 50 is
+      required</p>
+  </div>
+  <div class="edit-form-element">
+    <div class="edit-form-input">
+      <label for="description">Description: </label>
+      <input id="description" type="text" formControlName="description">
+    </div>
+  </div>
+  <div class="edit-form-element" formArrayName="ingredients">
+    <div class="edit-form-input" *ngFor="let ingredient of ingredients.controls; let i = index">
+      <label for="ingredient-{{ i }}">Add ingredient: </label>
+      <input id="ingredient-{{ i }}" type="text" [formControlName]="i">
+    </div>
+    <button (click)="addIngredient()" type="button">Add next ingredient</button>
+  </div>
+  <div class="edit-form-element" formArrayName="photos">
+    <div class="edit-form-input" *ngFor="let photo of photos.controls; let i = index">
+      <label for="photo-{{ i }}">Add photo: </label>
+      <input id="photo-{{ i }}" type="text" [formControlName]="i">
+    </div>
+    <button (click)="addPhoto()" type="button">Add next photo</button>
+  </div>
+  <button class="edit-form-button" [disabled]="!edit.valid">Update dish</button>
+</form>

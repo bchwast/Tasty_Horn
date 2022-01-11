@@ -1,0 +1,48 @@
+<div class="dish-page-container">
+  <button routerLink="/dishes" routerLinkActive="active">Back</button>
+  <div class="dish-page-right">
+    <div class="dish-page-picture">
+      <button class="dish-page-picture-button" (click)="prevPhoto()">
+        <fa-icon [icon]="faChevronLeft"></fa-icon>
+      </button>
+      <img [src]="dish.photos[photo]" alt="{{dish.name}} picture">
+      <button class="dish-page-picture-button" (click)="nextPhoto()">
+        <fa-icon [icon]="faChevronRight"></fa-icon>
+      </button>
+    </div>
+  </div>
+  <div class="dish-page-left">
+    <h1>{{dish.name}}</h1>
+    <p class="dish-page-detail">Cuisine: {{dish.cuisine | titlecase}}</p>
+    <p class="dish-page-detail">Type: {{dish.type}}</p>
+    <p class="dish-page-detail">Category: {{dish.category}}</p>
+    <p class="dish-page-detail">Available: {{available(dish)}}</p>
+    <p class="dish-page-detail">Ordered: {{dish.ordered}}</p>
+    <p class="dish-page-detail">Price: {{(dish.price * cartCurrencyService.currencies[cartCurrencyService.currentCurrency].value).toFixed(2)}}
+      {{cartCurrencyService.currencies[cartCurrencyService.currentCurrency].symbol}}</p>
+    <p class="dish-page-detail">Rating: {{dish.rating}}</p>
+    <p class="dish-page-detail">Description: {{dish.description}}</p>
+    <div class="dish-page-detail">Ingredients:
+     <p class="dish-page-detail-deep" *ngFor="let ingredient of dish.ingredients">
+       - {{ingredient}}
+     </p>
+    </div>
+    <div class="dish-page-buy">
+      <button class="dish-page-add" (click)="cartCurrencyService.addToCart(dish); alert = 0" [hidden]="!canAddToCart(dish)">Order dish</button>
+      <button class="dish-page-remove" (click)="cartCurrencyService.removeFromCart(dish)">Resign</button>
+    </div>
+    <p>Rate dish: </p>
+    <div class="dish-page-rating">
+      <div class="dish-page-star" *ngFor="let star of stars">
+        <img [src]="rating >= star && rated ? '../../assets/images/gold_star.png' : '../../assets/images/black_star.png'"
+             alt="star"
+             (click)="addRating(dish, star)">
+      </div>
+    </div>
+    <p class="dish-page-alert" *ngIf="alert == 1">Manager cannot rate dishes!</p>
+    <p class="dish-page-alert" *ngIf="alert == 2">Banned users cannot rate dishes!</p>
+    <p class="dish-page-alert" *ngIf="alert == 3">You need to order the dish first!</p>
+    <p class="dish-page-alert" *ngIf="alert == 4">You cannot rate one dish more than once!</p>
+  </div>
+  <app-dish-review class="dish-page-review" [dish]="dish" [user]="user"></app-dish-review>
+</div>

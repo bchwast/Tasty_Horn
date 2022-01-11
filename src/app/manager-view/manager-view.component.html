@@ -1,0 +1,18 @@
+<button class="manager-add-dish" routerLink="/add" routerLinkActive="active">Add dish</button>
+<app-filter></app-filter>
+<app-page></app-page>
+<section class="manager-dishes-list-container">
+  <div class="manager-dishes-list-element" *ngFor="let dish of filterService.dishes | filterDishes:
+    filterService.name:
+    filterService.cuisines:
+    filterService.categories:
+    filterService.ratings:
+    filterService.minPrice:
+    filterService.maxPrice:
+    cartCurrencyService.currencies[cartCurrencyService.currentCurrency].value | slice:
+    (paginationService.currentPage - 1) * paginationService.itemsPerPage:
+     paginationService.currentPage * paginationService.itemsPerPage">
+    <app-dish-record [dish]="dish"></app-dish-record>
+  </div>
+</section>
+<app-page></app-page>

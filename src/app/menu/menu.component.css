@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, serif;
+  text-decoration: none;
+}
+
+.menu-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: darkslateblue;
+  display: flex;
+  height: 100px;
+  width: 100%;
+  gap: 20%;
+  padding-left: 5%;
+  align-items: center;
+  box-shadow: 8px 8px 24px -8px rgba(66, 68, 90, 1);
+}
+
+.menu-container {
+  position: sticky;
+  top: 100px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  background-color: darkslateblue;
+  color: white;
+  transition: ease 0.3s;
+  transform: scaleY(1);
+  transform-origin: top;
+  height: 100%;
+  box-shadow: 8px 8px 24px -8px rgba(66, 68, 90, 1);
+}
+
+.menu-subcontainer-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-subcontainer-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-element {
+  color: white;
+  font-size: 150%;
+  padding: 5px;
+  transition: ease 0.3s;
+  text-align: center;
+  cursor: pointer;
+}
+
+.menu-element:hover {
+  background-color: rebeccapurple;
+}
+
+#menu-element-currency {
+  cursor: default;
+}
+
+#menu-element-currency:hover {
+  background-color: darkslateblue;
+}
+
+#menu-element-nick {
+  cursor: default;
+}
+
+#menu-element-nick:hover {
+  background-color: darkslateblue;
+}
+
+.menu-currency {
+  background-color: black;
+  cursor: pointer;
+  padding: 3px;
+}
+
+.menu-logo {
+  height: 100px;
+}
+
+.menu-logo > img {
+  width: 100%;
+  height: 100%;
+}
+
+.menu-hamburger {
+  display: block;
+  cursor: pointer;
+}
+
+.menu-hamburger-bar1, .menu-hamburger-bar2, .menu-hamburger-bar3 {
+  width: 70px;
+  height: 10px;
+  background-color: white;
+  margin: 10px 0;
+  transition: 0.4s;
+}
+
+.menu-hamburger-bar1-clicked {
+  transform: rotate(-40deg) translate(-13px, 10px);
+}
+
+.menu-hamburger-bar2-clicked {
+  opacity: 0;
+}
+
+.menu-hamburger-bar3-clicked {
+  transform: rotate(40deg) translate(-15px, -15px);
+}
+
+@media only screen and (min-width: 768px) {
+  .menu-container {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+
+  .menu-subcontainer-left {
+    flex-flow: row nowrap;
+  }
+
+  .menu-subcontainer-right {
+    flex-flow: row nowrap;
+  }
+
+  .menu-hamburger {
+    display: none;
+  }
+}

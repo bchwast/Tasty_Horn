@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, serif;
+}
+
+.edit-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 15px;
+  box-shadow: 8px 8px 24px -6px rgba(66, 68, 90, 1);
+  padding: 1%;
+  margin-bottom: 1%;
+}
+
+.edit-form-container > h1 {
+  font-size: 300%;
+  margin-bottom: 2%;
+}
+
+.edit-form-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-form-input {
+  margin: 2% 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-form-input > label {
+  font-size: 120%;
+  margin-right: 2%;
+  white-space: nowrap;
+}
+
+.edit-form-input > input {
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  padding: 2%;
+  font-size: 110%;
+}
+
+.edit-form-container button {
+  background-color: royalblue;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  padding: 0.5%;
+  font-size: 120%;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 1%;
+}
+
+.edit-form-container button:hover {
+  background-color: darkslateblue;
+}
+
+.edit-form-container button:disabled {
+  background-color: grey;
+  cursor: default;
+}
+
+.edit-form-element > button {
+  padding: 2%;
+  font-size: 110%;
+  margin-bottom: 1%;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .edit-form-input {
+    flex-direction: row;
+  }
+}

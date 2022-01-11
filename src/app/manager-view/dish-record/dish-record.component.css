@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, serif;
+}
+
+.dish-record-container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  grid-template-areas:
+    "picture picture picture name name name"
+    "picture picture picture name name name"
+    "picture picture picture cuisine cuisine cuisine"
+    "picture picture picture type type type"
+    "picture picture picture category category category"
+    "picture picture picture ordered rating rating"
+    "picture picture picture price price price"
+    "picture picture picture edit edit remove";
+  background-color: cornflowerblue;
+  color: white;
+  border: 10px solid grey;
+  border-radius: 15px;
+  box-shadow: 8px 8px 24px -10px rgba(66, 68, 90, 1);
+  transition: ease 0.2s;
+}
+
+.dish-record-container:hover {
+  height: 101%;
+  width: 101%;
+}
+
+.dish-record-name {
+  grid-area: name;
+  font-size: 150%;
+  margin: auto;
+  text-align: center;
+}
+
+.dish-record-ordered {
+  grid-area: ordered;
+  font-size: 200%;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.dish-record-picture {
+  grid-area: picture;
+}
+
+.dish-record-picture > img {
+  width: 100%;
+  height: 100%;
+}
+
+.dish-record-type {
+  grid-area: type;
+  margin: auto;
+  font-size: 120%;
+}
+
+.dish-record-cuisine {
+  grid-area: cuisine;
+  margin: auto;
+  font-size: 120%;
+}
+
+.dish-record-category {
+  grid-area: category;
+  margin: auto;
+  font-size: 120%;
+}
+
+.dish-record-price {
+  grid-area: price;
+  margin: auto;
+  font-size: 200%;
+}
+
+.dish-record-edit {
+  grid-area: edit;
+  cursor: pointer;
+  font-size: 170%;
+  color: white;
+  background-color: greenyellow;
+  border: 0;
+  transition: ease 0.2s;
+}
+
+.dish-record-edit:hover {
+  background-color: green;
+}
+
+.dish-record-remove {
+  grid-area: remove;
+  cursor: pointer;
+  font-size: 130%;
+  color: white;
+  background-color: indianred;
+  border: 0;
+  transition: ease 0.2s;
+}
+
+.dish-record-remove:hover {
+  background-color: red;
+}
+
+.dish-record-rating {
+  grid-area: rating;
+}
+
+.dish-record-rating img {
+  width: 20%;
+  height: 90%;
+}

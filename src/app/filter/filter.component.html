@@ -1,0 +1,43 @@
+<div class="filter-container">
+  <form>
+    <div class="filter-section">
+      <h2>Dish name</h2>
+      <input id="name" name="dishName" [(ngModel)]="filterService.name">
+    </div>
+    <div class="filter-section">
+      <h2>Cuisine</h2>
+      <button *ngFor="let cuisine of filterService.getAllCuisines()"
+              (click)="filterService.cuisineSwitch(cuisine)"
+              [ngStyle]="{'background-color': filterService.cuisines.includes(cuisine) ? 'darkslateblue' : null}"
+              type="button">
+        {{cuisine}}
+      </button>
+    </div>
+    <div class="filter-section">
+      <h2>Category</h2>
+      <button *ngFor="let category of filterService.getAllCategories()"
+              (click)="filterService.categorySwitch(category)"
+              [ngStyle]="{'background-color': filterService.categories.includes(category) ? 'darkslateblue' : null}"
+              type="button">
+        {{category}}
+      </button>
+    </div>
+    <div class="filter-section">
+      <h2>Rating</h2>
+      <button *ngFor="let rating of filterService.getAllRatings()"
+              (click)="filterService.ratingSwitch(rating)"
+              [ngStyle]="{'background-color': filterService.ratings.includes(rating) ? 'darkslateblue' : null}"
+              type="button">
+        {{rating}}
+      </button>
+    </div>
+    <div class="filter-section">
+      <ngx-slider [(value)]="filterService.minPrice" [(highValue)]="filterService.maxPrice"
+                  [options]="options">
+      </ngx-slider>
+    </div>
+    <button (click)="filterService.reset()">
+      Reset filters
+    </button>
+  </form>
+</div>

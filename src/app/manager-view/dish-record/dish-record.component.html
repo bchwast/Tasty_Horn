@@ -1,0 +1,37 @@
+<div class="dish-record-container" [ngStyle]="{'background-color': available(dish) <+ 3 ? 'orange' : null,
+  'border-color': dish.price == filterService.maxPrice ? 'green' : (dish.price == filterService.minPrice) ? 'red' : null}">
+  <h3 class="dish-record-name">
+    {{dish.name | uppercase}}
+  </h3>
+  <picture class="dish-record-picture">
+    <img src="{{dish.photos[0]}}" alt="picture of {{dish.name}}">
+  </picture>
+  <p class="dish-record-cuisine">
+    {{dish.cuisine | uppercase}}
+  </p>
+  <p class="dish-record-type">
+    {{dish.type}}
+  </p>
+  <p class="dish-record-category">
+    {{dish.category}}
+  </p>
+  <p class="dish-record-price">
+    {{(dish.price * cartCurrencyService.currencies[cartCurrencyService.currentCurrency].value).toFixed(2)}}
+    {{cartCurrencyService.currencies[cartCurrencyService.currentCurrency].symbol}}
+  </p>
+  <button class="dish-record-edit" [routerLink]="['/edit/', dish.id]" routerLinkActive="active">
+    Edit
+  </button>
+  <button class="dish-record-remove" (click)="deleteDish()">
+    <fa-icon [icon]="faTrash"></fa-icon>
+  </button>
+  <p class="dish-record-ordered" [ngStyle]="{'background-color': dish.ordered > 10
+      ? 'blue' : 'darkorange'}">{{dish.ordered}}</p>
+  <p class="dish-record-rating">
+    <span *ngFor="let star of stars">
+      <img class="dish-record-star"
+           [src]="dish.rating >= star ? '../../assets/images/gold_star.png' : '../../assets/images/black_star.png'"
+           alt="star">
+    </span>
+  </p>
+</div>
