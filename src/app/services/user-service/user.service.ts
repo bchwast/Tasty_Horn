@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from "@angular/fire/compat/database";
 import { User } from "../../classes/user";
-import { Observable, map } from "rxjs";
+import {Observable, map} from "rxjs";
 import {Dish} from "../../classes/dish";
 
 @Injectable({
@@ -29,10 +29,6 @@ export class UserService {
   addUser(user: User) {
     this.db.list('users').set(user.key, {nick: user.nick, email: user.email, type: user.type,
       history: user.history, banned: user.banned});
-  }
-
-  removeUser(user: User) {
-    this.db.list('users').remove(user.key);
   }
 
   setUser(user: User) {

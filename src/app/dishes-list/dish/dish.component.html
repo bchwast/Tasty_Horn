@@ -23,10 +23,11 @@
     Dish unavailable
   </p>
   <button class="dish-add" (click)="cartCurrencyService.addToCart(dish)"
-          [hidden]="!canAddToCart(dish) ">
+          [hidden]="!canAddToCart(dish) || cartCurrencyService.user == cartCurrencyService.guest">
     +
   </button>
-  <button class="dish-remove" (click)="cartCurrencyService.removeFromCart(dish)">
+  <button class="dish-remove" (click)="cartCurrencyService.removeFromCart(dish)"
+          [hidden]="cartCurrencyService.user == cartCurrencyService.guest">
     -
   </button>
   <p class="dish-ordered" [ngStyle]="{'background-color': dish.ordered > 10

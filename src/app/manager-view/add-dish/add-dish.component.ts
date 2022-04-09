@@ -18,8 +18,8 @@ export class AddDishComponent implements OnInit {
     type: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
     category: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
     ingredients: this.formBuilder.array([this.formBuilder.control('')]),
-    maxAmount: [0, [Validators.required, Validators.min(0)]],
-    price: [0, [Validators.required, Validators.min(0), Validators.max(50)]],
+    maxAmount: [0, [Validators.required, Validators.min(1)]],
+    price: [0, [Validators.required, Validators.min(1), Validators.max(50)]],
     description: ['', [Validators.required]],
     photos: this.formBuilder.array([this.formBuilder.control('')])
   });

@@ -50,7 +50,7 @@
     </div>
     <p class="add-dish-alert" *ngIf="dishForm.get('maxAmount')!.hasError('required') &&
       (dishForm.get('maxAmount')!.touched || dishForm.get('maxAmount')!.dirty)">Max amount is required</p>
-    <p class="add-dish-alert" *ngIf="dishForm.get('maxAmount')!.hasError('pattern') &&
+    <p class="add-dish-alert" *ngIf="dishForm.get('maxAmount')!.hasError('min') &&
       (dishForm.get('maxAmount')!.touched || dishForm.get('maxAmount')!.dirty)">Non-negative number is required</p>
   </div>
   <div class="add-dish-element">
@@ -60,9 +60,10 @@
     </div>
     <p class="add-dish-alert" *ngIf="dishForm.get('price')!.hasError('required') &&
       (dishForm.get('price')!.touched || dishForm.get('price')!.dirty)">Price is required</p>
-    <p class="add-dish-alert" *ngIf="dishForm.get('price')!.hasError('pattern') &&
-      (dishForm.get('price')!.touched || dishForm.get('price')!.dirty)">Non-negative number lower than 50 is
-      required</p>
+    <p class="add-dish-alert" *ngIf="dishForm.get('price')!.hasError('min') &&
+      (dishForm.get('price')!.touched || dishForm.get('price')!.dirty)">Non-negative number not lower than 1 is required</p>
+    <p class="add-dish-alert" *ngIf="dishForm.get('price')!.hasError('max') &&
+      (dishForm.get('price')!.touched || dishForm.get('price')!.dirty)">Non-negative number lower than 50 is required</p>
   </div>
   <div class="add-dish-element">
     <div class="add-dish-input">

@@ -6,7 +6,8 @@ import {Dish} from "../../classes/dish";
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(dishes: Dish[], name: string, cuisine: string[], category: string[], rating: number[], minPrice: number, maxPrice: number, currency: number): Dish[] {
+  transform(dishes: Dish[], name: string, cuisine: string[], category: string[], rating: number[], minPrice: number,
+            maxPrice: number, currency: number): Dish[] {
     let output = dishes;
     if (dishes && name) {
       name = name.toLowerCase();

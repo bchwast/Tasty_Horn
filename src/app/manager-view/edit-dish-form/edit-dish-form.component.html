@@ -39,7 +39,7 @@
       <label for="max-amount">Amount: </label>
       <input id="max-amount" type="number" formControlName="maxAmount">
     </div>
-    <p class="edit-form-alert" *ngIf="edit.get('maxAmount')!.hasError('pattern') &&
+    <p class="edit-form-alert" *ngIf="edit.get('maxAmount')!.hasError('min') &&
       (edit.get('maxAmount')!.touched || edit.get('maxAmount')!.dirty)">Non-negative number is required</p>
   </div>
   <div class="edit-form-element">
@@ -47,9 +47,10 @@
       <label for="price">Price: </label>
       <input id="price" type="number" formControlName="price">
     </div>
-    <p class="edit-form-alert" *ngIf="edit.get('price')!.hasError('pattern') &&
-      (edit.get('price')!.touched || edit.get('price')!.dirty)">Non-negative number lower than 50 is
-      required</p>
+    <p class="edit-form-alert" *ngIf="edit.get('price')!.hasError('min') &&
+      (edit.get('price')!.touched || edit.get('price')!.dirty)">Non-negative number not lower than 1 is required</p>
+    <p class="edit-form-alert" *ngIf="edit.get('price')!.hasError('max') &&
+      (edit.get('price')!.touched || edit.get('price')!.dirty)">Non-negative number lower than 50 is required</p>
   </div>
   <div class="edit-form-element">
     <div class="edit-form-input">

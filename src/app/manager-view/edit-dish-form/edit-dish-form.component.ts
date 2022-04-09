@@ -57,14 +57,12 @@ export class EditDishFormComponent implements OnInit {
   }
 
   updateDish(edit: any) {
-    console.log(edit.ingredients);
-    console.log(edit.photos);
     this.dish.name = edit.name != null && edit.name != '' ? edit.name : this.dish.name;
     this.dish.cuisine = edit.cuisine != null && edit.cuisine != '' ? edit.cuisine: this.dish.cuisine;
     this.dish.type = edit.type != null && edit.type != '' ? edit.type : this.dish.type
     this.dish.category = edit.category != null && edit.category != '' ? edit.category : this.dish.category;
     this.dish.maxAmount = edit.maxAmount > 0 ? edit.maxAmount : this.dish.maxAmount;
-    this.dish.price = edit.price > 0 ? edit.price : this.dish.price;
+    this.dish.price = edit.price >= 1 ? edit.price : this.dish.price;
     this.dish.description = edit.description != null && edit.description != '' ? edit.description : this.dish.description;
     if (edit.ingredients.length > 0) {
       for (let ingredient of edit.ingredients) {

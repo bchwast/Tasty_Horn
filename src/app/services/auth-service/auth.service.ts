@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { UserService } from "../user-service/user.service";
 import { Router } from "@angular/router";
-import firebase from "firebase/compat/app";
 import {Observable} from "rxjs";
 import {User} from "../../classes/user";
+import {PersistenceService} from "../persistence-service/persistence.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,12 @@ import {User} from "../../classes/user";
 export class AuthService {
   userData!: Observable<any>;
 
-  constructor(public auth: AngularFireAuth, public userService: UserService, public router: Router) {
+  constructor(public auth: AngularFireAuth, public userService: UserService, public router: Router,
+              public persistenceService: PersistenceService){
     this.userData = auth.authState;
+    this.persistenceService.persistence.subscribe(e => {
+      this.persistenceService.setPersistence(e);
+    })
   }
 
   signUp(nick: string, email: string, password: string) {
@@ -44,22 +48,5 @@ export class AuthService {
       .catch(error => {
         alert('Something went wrong with sing ouy ' + error);
       })
-  }
-
-  setPersistence(type: string) {
-    let accepted = ['local', 'session', 'none'];
-    if (!accepted.includes(type)) {
-      return;
-    }
-    switch (type) {
-      case 'local':
-        return this.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-      case 'session':
-        return this.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
-      case 'none':
-        return this.auth.setPersistence(firebase.auth.Auth.Persistence.NONE);
-      default:
-        return;
-    }
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Dish } from "../classes/dish";
 import { DatabaseService } from "../services/database-service/database.service";
 import { FilterService } from "../services/filter-service/filter.service";
 import { PaginationService } from "../services/pagination-service/pagination.service";

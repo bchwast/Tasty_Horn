@@ -14,7 +14,7 @@ export class DatabaseService {
   }
 
   getDishes(): Observable<any> {
-    return this.db.list('dishes').snapshotChanges().pipe(map(actions => {
+    return this.db.list('dishes2').snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         let data = a.payload.val();
         // @ts-ignore
@@ -34,29 +34,29 @@ export class DatabaseService {
   }
 
   addDish(dish: Dish) {
-    this.db.list('dishes').push(dish);
+    this.db.list('dishes2').push(dish);
   }
 
   removeDish(dish: Dish) {
-    this.db.list('dishes').remove(dish.key);
+    this.db.list('dishes2').remove(dish.key);
   }
 
   addRating(dish: Dish, star: number) {
     dish.ratings.push(star);
     dish.rating = Math.round(dish.ratings.reduce((a, b) => a + b) / dish.ratings.length);
-    this.db.list('dishes').update(dish.key, {ratings: dish.ratings, rating: dish.rating});
+    this.db.list('dishes2').update(dish.key, {ratings: dish.ratings, rating: dish.rating});
   }
 
   addReview(dish: Dish) {
-    this.db.list('dishes').update(dish.key, {reviews: dish.reviews});
+    this.db.list('dishes2').update(dish.key, {reviews: dish.reviews});
   }
 
   orderDish(dish: Dish) {
-    this.db.list('dishes').update(dish.key, {ordered: dish.ordered});
+    this.db.list('dishes2').update(dish.key, {ordered: dish.ordered});
   }
 
   updateDish(dish: Dish) {
-    this.db.list('dishes').update(dish.key, {name: dish.name, cuisine: dish.cuisine, type: dish.type,
+    this.db.list('dishes2').update(dish.key, {name: dish.name, cuisine: dish.cuisine, type: dish.type,
       category: dish.category, ingredients: dish.ingredients, maxAmount: dish.maxAmount, price: dish.price,
       description: dish.description, photos: dish.photos})
   }

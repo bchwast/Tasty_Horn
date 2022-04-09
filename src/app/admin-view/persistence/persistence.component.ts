@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../../services/auth-service/auth.service";
+import { PersistenceService } from "../../services/persistence-service/persistence.service";
 
 @Component({
   selector: 'app-persistence',
@@ -7,8 +7,14 @@ import { AuthService } from "../../services/auth-service/auth.service";
   styleUrls: ['./persistence.component.css']
 })
 export class PersistenceComponent implements OnInit {
-  constructor(public authService: AuthService) { }
+  persistence = "";
+
+  constructor(public persistenceService: PersistenceService) {
+  }
 
   ngOnInit(): void {
+    this.persistenceService.persistence.subscribe(e => {
+      this.persistence = e;
+    })
   }
 }
