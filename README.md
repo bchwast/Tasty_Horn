@@ -1,3 +1,11 @@
+# Tasty Horn
+
+## Brief
+Project created during Introduction to Web Application course - main theme of this project is to create a single-page web application for restaurant. The app lets users create their accounts, browse and order dishes, rate them and leave reviews. It has as well different functionalities for manager, who can add, edit and remove dishes and for admin, who have permissions to change persistence and manage users.
+
+## Functionalities 
+1. 
+
 # Restaurant
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.
