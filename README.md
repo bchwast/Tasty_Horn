@@ -4,7 +4,29 @@
 Project created during Introduction to Web Application course - main theme of this project is to create a single-page web application for restaurant. The app lets users create their accounts, browse and order dishes, rate them and leave reviews. It has as well different functionalities for manager, who can add, edit and remove dishes and for admin, who have permissions to change persistence and manage users.
 
 ## Functionalities 
-1. 
+1. #### Main page
+  On the main page you can find very brief description of the restaurant.
+  <div align="center"> <img style="max-width: 800px" src="imgs/landing.png" alt="landing"></div>
+
+2. #### Creating an account
+  To see dish details, you need to be logged in to your account, which you can as well create.
+
+3. #### Ordering, rating and reviewing dishes
+  Menu has implemented filters that help you select desirable dish as well as pagination that declutters your screen.
+
+4. #### Editing menu
+  As a manager you have access to the dish list and you can freely modify them
+ <div align="center"> <img style="max-width: 800px" src="imgs/manage.gif" alt="managing dishes"></div>
+ 
+5. #### Admin privileges
+  As an adimn you can set the persistence and manage users
+   <div align="center"> <img style="max-width: 800px" src="imgs/admin.gif" alt="admin view"></div>
+
+Application has implemented guards that secure access to parts, which require additional permissions.
+Project was made with the usage of Angular for the frontend part, backend was implemented with the help of Firebase.
+
+Feel free to try this app by yourself: https://tasty-horn.web.app/
+
 
 # Restaurant
 
